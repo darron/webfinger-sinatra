@@ -1,0 +1,74 @@
+= webfinger-sinatra
+
+http://github.com/darron/webfinger-sinatra
+
+A very simple webfinger server written using Sinatra and DataMapper.
+
+== QUICKSTART:
+
+    git clone git://github.com/darron/webfinger-sinatra.git
+
+webfinger.rb :Setup DOMAIN and WEBFINGER_SERVER
+webfinger.rb: Uncomment "DataMapper.auto_migrate!"
+Create webfinger db on local dev machine.
+
+    thin --rackup config.ru start
+
+Add a record to your MySQL table - this will be what DM searches when it gets queried:
+
+id: 1
+email: email@example.com
+finger: XML data goes here.
+
+Check it out:
+
+http://localhost:3000/webfinger/email@example.com
+
+Update your finger data and upload to server - I used Heroku:
+
+    heroku create app-name-here
+    git push heroku master
+    heroku db:push mysql://root:@localhost/webfinger
+
+You can see it in action here:
+
+http://froese.org/.well-known/host-meta
+http://webfinger.froese.org/
+http://webfinger.froese.org/webfinger/darron@froese.org
+
+== NOTE:
+
+Appears to work according to this service:
+
+http://webfingerclient-dclinton.appspot.com/
+
+But not according to:
+
+http://webfinger.org/lookup/darron@froese.org
+
+Looking into it - looks like I may be missing acct: on the query - not sure if that's part of the spec or I'm reading it wrong.
+
+== LICENSE:
+
+(The MIT License)
+
+Copyright (c) 2010 Darron Froese
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
