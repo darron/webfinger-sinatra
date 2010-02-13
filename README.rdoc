@@ -8,17 +8,17 @@ A very simple webfinger server written using Sinatra and DataMapper.
 
     git clone git://github.com/darron/webfinger-sinatra.git
 
-webfinger.rb :Setup DOMAIN and WEBFINGER_SERVER
-webfinger.rb: Uncomment "DataMapper.auto_migrate!"
-Create webfinger db on local dev machine.
+    webfinger.rb :Setup DOMAIN and WEBFINGER_SERVER
+    webfinger.rb: Uncomment "DataMapper.auto_migrate!"
+    Create webfinger db on local dev machine.
 
     thin --rackup config.ru start
 
 Add a record to your MySQL table - this will be what DM searches when it gets queried:
 
-id: 1
-email: email@example.com
-finger: XML data goes here.
+    id: 1
+    email: email@example.com
+    finger: XML data goes here.
 
 Check it out:
 
@@ -32,9 +32,9 @@ Update your finger data and upload to server - I used Heroku:
 
 You can see it in action here:
 
-http://froese.org/.well-known/host-meta
-http://webfinger.froese.org/
-http://webfinger.froese.org/webfinger/darron@froese.org
+    http://froese.org/.well-known/host-meta
+    http://webfinger.froese.org/
+    http://webfinger.froese.org/webfinger/darron@froese.org
 
 == NOTE:
 
