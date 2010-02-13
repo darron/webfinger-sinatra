@@ -38,15 +38,10 @@ You can see it in action here:
 
 == NOTE:
 
-Appears to work according to this service:
+Appears to work according to these services:
 
 http://webfingerclient-dclinton.appspot.com/
-
-But not according to:
-
 http://webfinger.org/lookup/darron@froese.org
-
-Looking into it - looks like I may be missing acct: on the query - not sure if that's part of the spec or I'm reading it wrong.
 
 == LICENSE:
 

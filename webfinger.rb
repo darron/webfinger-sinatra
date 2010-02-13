@@ -26,7 +26,9 @@ get '/.well-known/host-meta' do
 end
 
 get '/webfinger/:uri' do
-  result = Webfinger.first(:email => params[:uri])
+  uri = CGI::unescape(params[:uri])
+  uri.gsub!('acct:', '')
+  result = Webfinger.first(:email => uri)
   @result = result.finger if result
   erb :webfinger
 end
