@@ -41,7 +41,10 @@ You can see it in action here:
 Appears to work according to these services:
 
 http://webfingerclient-dclinton.appspot.com/
+
 http://webfinger.org/lookup/darron@froese.org
+
+http://web.mailana.com/labs/findbyemail/
 
 == LICENSE:
 
